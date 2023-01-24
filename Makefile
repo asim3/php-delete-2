@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 
-PROJECT_NAME=my_project_name
+PROJECT_NAME=samiphp2
 
 CD=cd ./${PROJECT_NAME} &&
 
