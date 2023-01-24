@@ -8,20 +8,14 @@ CD=cd ./${PROJECT_NAME} &&
 export DB_HOST=127.0.0.1
 export DB_DATABASE=${PROJECT_NAME}
 export DB_USERNAME=${PROJECT_NAME}-user
-export DB_PASSWORD=top-secret
+export DB_PASSWORD=Top-secret@123
 
 
 main: run
 
 
-setup:
-	sudo mysql -e "DROP DATABASE IF EXISTS ${DB_DATABASE};"
-	sudo mysql -e "CREATE DATABASE ${DB_DATABASE};"
-	sudo mysql -e "DROP   USER IF EXISTS '${DB_USERNAME}'@'localhost';"
-	sudo mysql -e "CREATE USER '${DB_USERNAME}'@'localhost' IDENTIFIED BY '${DB_PASSWORD}';"
-	sudo mysql -e "GRANT ALL PRIVILEGES ON * . * TO '${DB_USERNAME}'@'localhost';"
-	sudo mysql -e "FLUSH PRIVILEGES;"
-	composer create-project --prefer-dist laravel/laravel ${PROJECT_NAME};
+init:
+	./setup/set-new-laravel-project.bash
 
 
 install:
